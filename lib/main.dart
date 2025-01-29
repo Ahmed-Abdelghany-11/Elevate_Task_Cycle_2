@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'core/dependency_injection/di.dart';
+import 'features/products/presentation/cubit/product_cubit.dart';
+import 'features/products/presentation/screen/product_screen.dart';
 
 void main() {
   configureDependencies();
@@ -8,22 +11,14 @@ void main() {
 }
 
 class ElevateTaskCycle2 extends StatelessWidget {
-  const ElevateTaskCycle2({Key? key}) : super(key: key);
+  const ElevateTaskCycle2({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Elevate Task Cycle 2',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('Elevate Task Cycle 2'),
-        ),
-        body: const Center(
-          child: Text('Hello, World!'),
-        ),
+      home: BlocProvider(
+        create: (_) => getIt<ProductCubit>()..getProducts(),
+        child: ProductScreen(),
       ),
     );
   }

@@ -14,7 +14,7 @@ part 'product_retrofit_client.g.dart';
 abstract class ProductRetrofitClient {
 
   @factoryMethod
-  factory ProductRetrofitClient(Dio dio, {String baseUrl}) = _ProductRetrofitClient;
+  factory ProductRetrofitClient(Dio dio) = _ProductRetrofitClient;
 
   @GET("/products")
   Future<List<ProductDto>> getProducts();
